@@ -8,6 +8,7 @@ node_modules/
 # Generated builds and portable exports
 dist/
 .data-app-offline/
+.data-app-assets/
 
 # Logs and editor state
 *.log
