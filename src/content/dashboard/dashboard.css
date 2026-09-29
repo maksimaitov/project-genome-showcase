@@ -152,12 +152,43 @@
 .pg-accepts { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; }
 .pg-accepts strong { display: block; margin-top: 6px; color: var(--text); font-size: 11px; text-transform: none; letter-spacing: 0; }
 
+.pg-table-scroll { width: 100%; overflow-x: auto; }
+.pg-genome-summary { display: grid; grid-template-columns: repeat(3, minmax(150px, .55fr)) minmax(280px, 1.35fr); border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
+.pg-genome-summary > div { min-height: 132px; display: grid; align-content: center; gap: 8px; padding: 20px 24px; border-right: 1px solid var(--border); }
+.pg-genome-summary strong { font: 500 42px/1 var(--font-serif); font-variant-numeric: tabular-nums; }
+.pg-genome-summary span { color: var(--secondary); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.pg-genome-summary p { align-self: center; margin: 0; padding: 24px 28px; color: var(--secondary); font-size: 12px; line-height: 1.7; }
+.pg-genome-table { min-width: 1120px; }
+.pg-genome-row { display: grid; grid-template-columns: 100px 165px 170px 155px minmax(300px, 1fr) 150px; gap: 18px; align-items: center; min-height: 76px; border-top: 1px solid var(--border); font-size: 12px; line-height: 1.45; }
+.pg-genome-row strong { font-size: 13px; }
+.pg-genome-row > span:nth-child(2), .pg-genome-row > span:nth-child(3), .pg-genome-row > span:nth-child(4), .pg-genome-row > span:nth-child(5) { color: var(--secondary); }
+.pg-genome-head { min-height: 46px; border-top-color: var(--border-strong); color: var(--secondary); font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.pg-genome-row em, .pg-labs-row em, .pg-lab-cards em { width: fit-content; padding: 5px 7px; border: 1px solid var(--outline-variant); border-radius: 4px; color: var(--secondary); font-size: 9px; font-style: normal; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.pg-genome-row em[data-status="boundary"], .pg-lab-cards article[data-status="lower_edge"] em, .pg-labs-row em[data-status="lower_edge"] { border-color: #d4b18f; background: #fbf2e9; color: #7d552f; }
+
+.pg-lab-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
+.pg-lab-cards article { min-height: 210px; display: grid; align-content: start; gap: 8px; padding: 24px; border-left: 1px solid var(--border); }
+.pg-lab-cards article:first-child { border-left: 0; }
+.pg-lab-cards article > span { color: var(--secondary); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.pg-lab-cards h3 { margin: 4px 0 14px; font-size: 18px; }
+.pg-lab-cards strong { font: 500 34px/1 var(--font-serif); font-variant-numeric: tabular-nums; }
+.pg-lab-cards strong small { color: var(--secondary); font: 500 13px var(--font-sans); }
+.pg-lab-cards p { margin: 10px 0; color: var(--secondary); font-size: 11px; }
+.pg-labs-table { min-width: 1040px; }
+.pg-labs-row { display: grid; grid-template-columns: 120px minmax(170px, 1.15fr) 145px 150px 150px 150px; gap: 18px; align-items: center; min-height: 58px; border-top: 1px solid var(--border); font-size: 12px; }
+.pg-labs-row b { text-align: right; font-weight: 550; font-variant-numeric: tabular-nums; }
+.pg-labs-row > span { color: var(--secondary); }
+.pg-labs-head { min-height: 46px; border-top-color: var(--border-strong); color: var(--secondary); font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.pg-lab-note { max-width: 900px; margin: 22px 0 2px; color: var(--secondary); font-size: 11px; line-height: 1.65; }
+
 .pg-protocol { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 4px 0 28px; }
 .pg-recommendation { position: relative; min-height: 455px; display: flex; flex-direction: column; padding: 28px; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: #ffffff; box-shadow: 0 20px 50px -44px rgb(25 28 26 / 55%); }
 .pg-recommendation::after { content: ""; position: absolute; width: 170px; height: 170px; right: -88px; bottom: -94px; border: 1px solid var(--outline-variant); border-radius: 50%; opacity: .45; }
 .pg-recommendation-consider { background: linear-gradient(145deg, #ffffff 0%, #f1f5ef 100%); }
+.pg-recommendation-maintain { background: linear-gradient(145deg, #ffffff 0%, #edf4f1 100%); }
 .pg-recommendation-seasonal { background: linear-gradient(145deg, #ffffff 0%, #fbf2e9 100%); }
 .pg-recommendation-not_supported { background: var(--surface-container-low); }
+.pg-recommendation-not_indicated, .pg-recommendation-confirm_first { background: var(--surface-container-low); }
 .pg-recommendation header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
 .pg-recommendation header > span { color: var(--accent); font: 500 19px var(--font-serif); }
 .pg-recommendation header em { padding: 6px 8px; border: 1px solid var(--outline-variant); border-radius: 4px; color: var(--secondary); font-size: 9px; font-style: normal; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -233,6 +264,10 @@
   .pg-hero-panel { grid-template-columns: 1fr; min-height: 0; }
   .pg-page-intro { min-height: 280px; align-items: start; flex-direction: column; }
   .pg-empty-grid { grid-template-columns: 1fr; }
+  .pg-genome-summary { grid-template-columns: repeat(3, 1fr); }
+  .pg-genome-summary p { grid-column: 1 / -1; border-top: 1px solid var(--border); }
+  .pg-lab-cards { grid-template-columns: 1fr 1fr; }
+  .pg-lab-cards article:nth-child(3) { border-top: 1px solid var(--border); }
   .pg-workout { grid-template-columns: 36px 1.4fr 1fr; }
   .pg-workout > div:nth-child(n+4) { display: none; }
   .pg-observation-section { grid-template-columns: 1fr; }
@@ -261,6 +296,13 @@
   .pg-night-note em { grid-column: 1 / -1; }
   .pg-empty-module { grid-template-columns: 1fr; }
   .pg-empty-visual { max-width: 190px; justify-self: center; }
+  .pg-genome-summary { grid-template-columns: 1fr; }
+  .pg-genome-summary > div { min-height: 96px; border-right: 0; border-top: 1px solid var(--border); }
+  .pg-genome-summary > div:first-child { border-top: 0; }
+  .pg-genome-summary p { grid-column: auto; }
+  .pg-lab-cards { grid-template-columns: 1fr; }
+  .pg-lab-cards article { min-height: 0; border-left: 0; border-top: 1px solid var(--border); }
+  .pg-lab-cards article:first-child { border-top: 0; }
   .pg-observations { grid-template-columns: 1fr; }
   .pg-recommendation { min-height: 0; padding: 22px; }
   .pg-recommendation-body { grid-template-columns: 1fr; }

@@ -75,7 +75,7 @@ const I18N = {
 
 Object.assign(I18N.ru.hero, {
   eyebrow: "Синтетический health showcase",
-  description: "Интерактивная демонстрация сна, восстановления, пульса и активности на правдоподобных вымышленных данных.",
+  description: "Интерактивная демонстрация сна, восстановления, активности, анализов крови и генетики на правдоподобных вымышленных данных.",
   local: "Синтетика · без персональных данных",
   dossier: "Вымышленный профиль · 30 дней",
 });
@@ -104,8 +104,32 @@ Object.assign(I18N.ru.activity, {
   sessionsDesc: "Вымышленные силовые, беговые, велосипедные и пешие тренировки с правдоподобными диапазонами.",
 });
 Object.assign(I18N.ru.genetics, {
-  intro: "В демо нет генетического источника, поэтому эти области намеренно остаются пустыми и ничего не выводят из данных носимого устройства.",
-  dnaDesc: "Карта хромосом, SNP и оценки метилирования не могут быть построены по данным носимого устройства.",
+  title: "Синтетический генетический профиль",
+  intro: "Восемь вымышленных вариантов показывают, как дашборд связывает генетику с анализами и рекомендациями. Это не ДНК владельца, не клинический тест и не основание для лечения.",
+  summary: "Сводка панели", variantsCount: "вариантов", pgxCount: "фармакогеномных маркера", clinicalCount: "клинических решений", panel: "Таблица вариантов",
+  gene: "Ген", variant: "Вариант", genotype: "Синтетический генотип", category: "Категория", interpretation: "Интерпретация", actionability: "Применимость",
+  categories: { "Nutrient metabolism":"Метаболизм нутриентов", "Iron handling":"Обмен железа", Pharmacogenomics:"Фармакогеномика", "Common trait":"Распространённый признак", "Sport trait":"Спортивный признак", "Food tolerance":"Пищевая переносимость" },
+  statuses: { low:"Низкая", boundary:"Только после подтверждения", informational:"Информационно" },
+  findings: {
+    mthfr:"Одна копия распространённого C677T; сама по себе не требует метилфолата.",
+    hfe_c282y:"C282Y не обнаружен в синтетической панели.",
+    hfe_h63d:"Одна синтетическая копия H63D; носительство не равно гемохроматозу.",
+    cyp2c19:"Демонстрационный диплотип нормальной функции; лекарства по нему не меняют.",
+    slco1b1:"Демонстрационный диплотип нормальной функции; требуется клиническое подтверждение.",
+    apoe:"Вымышленный ε3/ε3; не является гарантией отсутствия сердечно-сосудистого или неврологического риска.",
+    actn3:"Распространённый спортивный маркер с малой индивидуальной предсказательной ценностью.",
+    mcm6:"Вариант совместим с сохранением лактазы, но ориентироваться следует на переносимость пищи.",
+  },
+  boundaryNote:"Ни один вариант не используется для диагноза, оценки происхождения или изменения лекарств. Реальные значимые результаты требуют валидированного анализа и специалиста.",
+});
+Object.assign(I18N.ru.labs, {
+  title:"Синтетические анализы крови", intro:"Одна вымышленная лабораторная панель дополняет данные часов. Значения, единицы и референсы созданы для демонстрации и не относятся к владельцу сайта.",
+  metrics:"Ключевые показатели", panel:"Полная лабораторная панель", date:"Дата", biomarker:"Показатель", result:"Результат", reference:"Референс демо-лаборатории", status:"Статус", source:"Synthetic demo lab",
+  statuses:{ within:"В диапазоне", lower_edge:"У нижней границы" },
+  panels:{ Glycaemic:"Глюкоза", Lipids:"Липиды", Inflammation:"Воспаление", Haematology:"Гематология", Iron:"Железо", Micronutrients:"Микронутриенты", Thyroid:"Щитовидная железа", Liver:"Печень", Kidney:"Почки" },
+  names:{ hba1c:"HbA1c", fasting_glucose:"Глюкоза натощак", total_cholesterol:"Общий холестерин", ldl:"LDL-C", hdl:"HDL-C", triglycerides:"Триглицериды", apob:"ApoB", hs_crp:"hs-CRP", haemoglobin:"Гемоглобин", ferritin:"Ферритин", transferrin_saturation:"Насыщение трансферрина", vitamin_d:"25-OH витамин D", vitamin_b12:"Витамин B12", folate:"Фолат", tsh:"TSH", alt:"ALT", creatinine:"Креатинин" },
+  lowerEdgeNote:"52 нмоль/л находится в синтетическом референсе, но близко к его нижней границе; это не диагноз дефицита.",
+  caveat:"Референсные интервалы зависят от лаборатории, метода и клинического контекста. Один результат не является трендом.",
 });
 Object.assign(I18N.ru.body, {
   intro: "Шесть синтетических измерений веса моделируют плавную динамику. Рост вымышленного профиля фиксирован, а BMI пересчитан локально.",
@@ -115,33 +139,42 @@ Object.assign(I18N.ru.body, {
   date: "Дата", source: "Источник", sourceName: "Synthetic demo",
 });
 Object.assign(I18N.ru.recommendations, {
-  intro: "Демонстрационный протокол, рассчитанный для вымышленного тренировочного профиля и дополненный внешней научной базой. Не диагностика и не назначение врача.",
+  intro: "Демонстрационный протокол объединяет синтетические данные часов, активность, вес, анализы крови и генетику. Не диагностика и не назначение врача.",
   protocolDesc: "Каждая карточка отделяет синтетическую персональную основу от внешней научной базы и ограничений.",
   basedOn: "Почему это показано в демо",
+  boundary: "Граница вывода",
+  statuses: { ...I18N.ru.recommendations.statuses, maintain:"Поддерживать", not_indicated:"Не показано", confirm_first:"Только после подтверждения" },
+  readiness:"Какие данные использованы", readinessDesc:"Четыре синтетических модуля участвуют в демонстрационном протоколе.",
+  geneticsText:"8 вымышленных вариантов; клинически значимые действия заблокированы без подтверждения.", labsText:"17 вымышленных показателей с единицами и референсами демо-лаборатории.", bodyText:"Вес и BMI используются только для расчётных ориентиров, не для диагноза.", modulesWaiting:"модулей без данных",
   medical: "Все персональные основания здесь синтетические. Это образовательная демонстрация интерфейса, а не медицинская рекомендация реальному человеку.",
 });
-Object.assign(I18N.ru.recommendations.items.creatine, { basis: "18 из 36 вымышленных тренировок — силовые." });
+Object.assign(I18N.ru.recommendations.items, {
+  activity_base:{ title:"Сохранить смешанный план активности", basis:"Около 8 000 шагов в день и 36 тренировок: силовые, бег, велосипед и походы.", dose:"Сохранять не менее 150 минут умеренной аэробной активности в неделю и минимум 2 силовых дня, регулируя нагрузку по самочувствию.", evidence:"Рекомендации по физической активности поддерживают сочетание аэробной и силовой нагрузки.", limitation:"Часы не измеряют технику, боль, противопоказания и точную интенсивность каждой сессии.", caution:"При боли, головокружении или необычных симптомах нагрузку следует прекратить и обратиться за медицинской оценкой." },
+  creatine:{ ...I18N.ru.recommendations.items.creatine, basis:"18 из 36 вымышленных тренировок — силовые; синтетический креатинин находится в референсе демо-лаборатории.", limitation:"Нормальный единичный креатинин не подтверждает безопасность добавки и не заменяет оценку функции почек." },
+  vitamin_d:{ ...I18N.ru.recommendations.items.vitamin_d, basis:"Синтетический 25-OH витамин D — 52 нмоль/л, у нижней границы демо-референса; профиль находится в Дублине.", dose:"Популяционный ориентир HSE: 15 мкг (600 IU) ежедневно с 31 октября по 17 марта для возраста 13–64 лет; это не лечебная доза.", evidence:"NIH считает ≥50 нмоль/л достаточным для большинства людей, а HSE рекомендует сезонный приём в Ирландии.", limitation:"Один вымышленный анализ не определяет индивидуальную цель или причину симптомов.", caution:"Высокие лечебные дозы требуют врача." },
+  iron_hold:{ title:"Не добавлять железо без показаний", basis:"Синтетические гемоглобин, ферритин и насыщение трансферрина находятся в референсах; HFE C282Y не обнаружен, H63D — одна копия.", dose:"В демо железо не назначается.", evidence:"Статус железа оценивают по нескольким показателям; избыток добавок может навредить.", limitation:"Носительство H63D не диагностирует и не исключает перегрузку железом.", caution:"Реальные симптомы или отклонения должен интерпретировать врач." },
+  mthfr_boundary:{ title:"Не покупать метилфолат из-за MTHFR", basis:"Синтетический MTHFR C677T — C/T, а фолат находится в референсе демо-лаборатории.", dose:"Специальная форма фолата по этому варианту не предлагается.", evidence:"CDC указывает, что люди с распространёнными вариантами MTHFR способны усваивать фолиевую кислоту.", limitation:"Один распространённый вариант не определяет индивидуальную потребность в добавке.", caution:"Рекомендации при планировании беременности рассматриваются отдельно." },
+  pgx_boundary:{ title:"Не менять лекарства по генетике из демо", basis:"CYP2C19 и SLCO1B1 полностью вымышлены; списка лекарств и валидированного анализа нет.", dose:"Не начинать, не отменять и не менять дозировку лекарств.", evidence:"FDA рекомендует подтверждать потребительские фармакогенетические результаты клиническим тестом и обсуждать их со специалистом.", limitation:"Демонстрационный генотип показывает интерфейс, а не медицинскую совместимость лекарства.", caution:"Нужны конкретный препарат, диагноз, доза, сопутствующие состояния и валидированный тест." },
+});
 Object.assign(I18N.ru.recommendations.items.protein, {
   basis: "Вымышленный профиль сочетает силовые тренировки с последним синтетическим весом 70,9 кг; данных о рационе нет.",
   dose: "Ориентир ≈1,6 г/кг/сутки соответствует примерно 113 г общего белка в день; добавка нужна только для закрытия измеренного дефицита рациона.",
   limitation: "Расчёт демонстрационный: без пищевого дневника нельзя определить реальный дефицит.",
 });
-Object.assign(I18N.ru.recommendations.items.vitamin_d, { basis: "Демо использует Europe/Dublin, чтобы показать рекомендацию, зависящую от региона и сезона." });
-Object.assign(I18N.ru.recommendations.items.withhold, { basis: "Синтетические сон и HRV не указывают на конкретный дефицит нутриентов." });
 Object.assign(I18N.ru.data, {
   title: "Каталог синтетических данных",
   intro: "Какие вымышленные наборы питают демо, сколько в них записей и как они были созданы.",
-  tables: "12 синтетических наборов",
+  tables: "14 синтетических наборов",
   description: "Счётчики сгенерированного snapshot и моделируемых высокочастотных потоков.",
   publicDemo: "Публичное демо · без персональных данных",
   reviewedSynthetic: "Проверенный синтетический snapshot",
-  categories: { ...I18N.ru.data.categories, Body: "Тело" },
+  categories: { ...I18N.ru.data.categories, Body: "Тело", Genetics:"Генетика", Laboratory:"Лаборатория" },
 });
 I18N.ru.footer = "Синтетические измерения · публичный showcase · воспроизводимая генерация";
 
 Object.assign(I18N.en.hero, {
   eyebrow: "Synthetic health showcase",
-  description: "An interactive demonstration of sleep, recovery, heart rate and activity using plausible fictional data.",
+  description: "An interactive demonstration of sleep, recovery, activity, blood results and genetics using plausible fictional data.",
   local: "Synthetic · no personal data",
   dossier: "Fictional profile · 30 days",
 });
@@ -170,8 +203,21 @@ Object.assign(I18N.en.activity, {
   sessionsDesc: "Fictional resistance, running, cycling and hiking sessions with plausible ranges.",
 });
 Object.assign(I18N.en.genetics, {
-  intro: "The demo has no genetic source, so these areas intentionally remain empty and infer nothing from wearable-device data.",
-  dnaDesc: "A chromosome map, SNPs and methylation scores cannot be built from wearable-device data.",
+  title:"Synthetic genetic profile", intro:"Eight invented variants demonstrate how the dashboard connects genetics with labs and recommendations. This is not the owner's DNA, a clinical test or a basis for treatment.",
+  summary:"Panel summary", variantsCount:"variants", pgxCount:"pharmacogenomic markers", clinicalCount:"clinical decisions", panel:"Variant table",
+  gene:"Gene", variant:"Variant", genotype:"Synthetic genotype", category:"Category", interpretation:"Interpretation", actionability:"Actionability",
+  categories:{ "Nutrient metabolism":"Nutrient metabolism", "Iron handling":"Iron handling", Pharmacogenomics:"Pharmacogenomics", "Common trait":"Common trait", "Sport trait":"Sport trait", "Food tolerance":"Food tolerance" },
+  statuses:{ low:"Low", boundary:"Confirm first", informational:"Informational" },
+  findings:{ mthfr:"One copy of common C677T; it does not by itself require methylfolate.", hfe_c282y:"C282Y is not detected in the synthetic panel.", hfe_h63d:"One synthetic H63D copy; carrier status is not haemochromatosis.", cyp2c19:"Demo normal-function diplotype; do not change medication from it.", slco1b1:"Demo normal-function diplotype; clinical confirmation would be required.", apoe:"Fictional ε3/ε3; it does not guarantee absence of cardiovascular or neurological risk.", actn3:"A common sport marker with little individual predictive value.", mcm6:"Compatible with lactase persistence, but food tolerance should guide decisions." },
+  boundaryNote:"No variant is used for diagnosis, ancestry claims or medication changes. Real consequential findings require a validated assay and qualified interpretation.",
+});
+Object.assign(I18N.en.labs, {
+  title:"Synthetic blood results", intro:"One fictional laboratory panel complements the wearable data. Values, units and ranges are created for this showcase and do not belong to the site owner.",
+  metrics:"Key biomarkers", panel:"Complete laboratory panel", date:"Date", biomarker:"Biomarker", result:"Result", reference:"Demo-lab reference", status:"Status", source:"Synthetic demo lab",
+  statuses:{ within:"Within range", lower_edge:"Near lower edge" },
+  panels:{ Glycaemic:"Glycaemic", Lipids:"Lipids", Inflammation:"Inflammation", Haematology:"Haematology", Iron:"Iron", Micronutrients:"Micronutrients", Thyroid:"Thyroid", Liver:"Liver", Kidney:"Kidney" },
+  names:{ hba1c:"HbA1c", fasting_glucose:"Fasting glucose", total_cholesterol:"Total cholesterol", ldl:"LDL-C", hdl:"HDL-C", triglycerides:"Triglycerides", apob:"ApoB", hs_crp:"hs-CRP", haemoglobin:"Haemoglobin", ferritin:"Ferritin", transferrin_saturation:"Transferrin saturation", vitamin_d:"25-OH vitamin D", vitamin_b12:"Vitamin B12", folate:"Folate", tsh:"TSH", alt:"ALT", creatinine:"Creatinine" },
+  lowerEdgeNote:"52 nmol/L is inside the synthetic reference but close to its lower edge; this is not a diagnosis of deficiency.", caveat:"Reference intervals vary by laboratory, method and clinical context. One result is not a trend.",
 });
 Object.assign(I18N.en.body, {
   intro: "Six synthetic weight measurements model a gradual trend. The fictional profile height is fixed and BMI is recalculated locally.",
@@ -181,33 +227,41 @@ Object.assign(I18N.en.body, {
   date: "Date", source: "Source", sourceName: "Synthetic demo",
 });
 Object.assign(I18N.en.recommendations, {
-  intro: "A demonstration protocol calculated for a fictional training profile and paired with external evidence. It is neither a diagnosis nor a prescription.",
+  intro: "This demonstration protocol combines synthetic wearable signals, activity, body metrics, blood results and genetics. It is neither a diagnosis nor a prescription.",
   protocolDesc: "Each card separates the synthetic personal basis from external evidence and data limits.",
   basedOn: "Why this appears in the demo",
+  boundary: "Evidence boundary",
+  statuses:{ ...I18N.en.recommendations.statuses, maintain:"Maintain", not_indicated:"Not indicated", confirm_first:"Confirm first" },
+  readiness:"Inputs used", readinessDesc:"Four synthetic modules contribute to the demonstration protocol.", geneticsText:"8 invented variants; consequential actions are blocked without confirmation.", labsText:"17 fictional biomarkers with units and demo-lab references.", bodyText:"Weight and BMI support calculations only, not diagnosis.", modulesWaiting:"modules without data",
   medical: "Every personal premise shown here is synthetic. This is an educational interface demonstration, not medical advice for a real person.",
 });
-Object.assign(I18N.en.recommendations.items.creatine, { basis: "18 of 36 fictional workouts are resistance-training sessions." });
+Object.assign(I18N.en.recommendations.items, {
+  activity_base:{ title:"Maintain the mixed activity plan", basis:"About 8,000 daily steps and 36 workouts spanning resistance, running, cycling and hiking.", dose:"Maintain at least 150 minutes of moderate aerobic activity each week plus at least 2 strength days, adjusting to symptoms and recovery.", evidence:"Physical-activity guidance supports a mix of aerobic and muscle-strengthening work.", limitation:"A wearable cannot assess technique, pain, contraindications or precise session intensity.", caution:"Stop and seek medical assessment for pain, dizziness or unusual symptoms." },
+  creatine:{ ...I18N.en.recommendations.items.creatine, basis:"18 of 36 fictional workouts are resistance sessions; synthetic creatinine is inside the demo-lab range.", limitation:"One in-range creatinine result does not establish supplement safety or replace kidney assessment." },
+  vitamin_d:{ ...I18N.en.recommendations.items.vitamin_d, basis:"Synthetic 25-OH vitamin D is 52 nmol/L, near the demo range's lower edge, and the profile is located in Dublin.", dose:"HSE population reference: 15 µg (600 IU) daily from 31 October to 17 March for ages 13–64; this is not a treatment dose.", evidence:"NIH describes ≥50 nmol/L as adequate for most people, while HSE recommends seasonal supplementation in Ireland.", limitation:"One fictional result cannot determine an individual target or explain symptoms.", caution:"High treatment doses require clinical review." },
+  iron_hold:{ title:"Do not add iron without an indication", basis:"Synthetic haemoglobin, ferritin and transferrin saturation are within range; HFE C282Y is not detected and H63D has one copy.", dose:"No iron supplement is proposed in this demo.", evidence:"Iron status uses multiple measures, and unnecessary high-dose supplementation can cause harm.", limitation:"H63D carrier status neither diagnoses nor excludes iron overload.", caution:"Real symptoms or abnormal results need clinician interpretation." },
+  mthfr_boundary:{ title:"Do not buy methylfolate because of MTHFR", basis:"Synthetic MTHFR C677T is C/T and folate is inside the demo-lab range.", dose:"No genotype-specific folate product is proposed.", evidence:"CDC states that people with common MTHFR variants can process folic acid.", limitation:"One common variant does not define an individual's supplement need.", caution:"Pregnancy-related folic-acid guidance is separate." },
+  pgx_boundary:{ title:"Do not change medicines from demo genetics", basis:"CYP2C19 and SLCO1B1 are entirely fictional; there is no medication list or validated assay.", dose:"Do not start, stop or change a medicine or dose.", evidence:"FDA advises clinical confirmation and professional discussion before acting on consumer pharmacogenetic results.", limitation:"The demo genotype shows product behavior, not drug compatibility.", caution:"Decisions require the exact drug, indication, dose, comorbidities and validated testing." },
+});
 Object.assign(I18N.en.recommendations.items.protein, {
   basis: "The fictional profile combines resistance training with a latest synthetic weight of 70.9 kg; dietary intake is unknown.",
   dose: "A reference of about 1.6 g/kg/day is approximately 113 g/day of total protein; use a supplement only to close a measured dietary gap.",
   limitation: "This is a demonstration calculation; a food log would be needed to identify a real gap.",
 });
-Object.assign(I18N.en.recommendations.items.vitamin_d, { basis: "The demo uses Europe/Dublin to illustrate guidance that depends on region and season." });
-Object.assign(I18N.en.recommendations.items.withhold, { basis: "Synthetic sleep and HRV trends do not identify a specific nutrient deficiency." });
 Object.assign(I18N.en.data, {
   title: "Synthetic data catalogue",
   intro: "Which fictional datasets power the demo, how many records they contain and how they were created.",
-  tables: "12 synthetic datasets",
+  tables: "14 synthetic datasets",
   description: "Counts from the generated snapshot and simulated high-frequency streams.",
   publicDemo: "Public demo · no personal data",
   reviewedSynthetic: "Reviewed synthetic snapshot",
-  categories: { ...I18N.en.data.categories, Body: "Body" },
+  categories: { ...I18N.en.data.categories, Body: "Body", Genetics:"Genetics", Laboratory:"Laboratory" },
 });
 I18N.en.footer = "Synthetic measurements · public showcase · reproducible generation";
 
 Object.assign(I18N.pt.hero, {
   eyebrow: "Showcase de saúde sintética",
-  description: "Uma demonstração interativa de sono, recuperação, frequência cardíaca e atividade com dados fictícios plausíveis.",
+  description: "Uma demonstração interativa de sono, recuperação, atividade, análises de sangue e genética com dados fictícios plausíveis.",
   local: "Sintético · sem dados pessoais",
   dossier: "Perfil fictício · 30 dias",
 });
@@ -236,8 +290,21 @@ Object.assign(I18N.pt.activity, {
   sessionsDesc: "Sessões fictícias de força, corrida, ciclismo e caminhada com intervalos plausíveis.",
 });
 Object.assign(I18N.pt.genetics, {
-  intro: "A demo não tem uma fonte genética, por isso estas áreas permanecem vazias e nada inferem a partir dos dados de um wearable.",
-  dnaDesc: "Um mapa cromossómico, SNPs e pontuações de metilação não podem ser criados a partir de dados de um wearable.",
+  title:"Perfil genético sintético", intro:"Oito variantes inventadas mostram como o dashboard liga genética, análises e recomendações. Não são o ADN do proprietário, um teste clínico ou uma base para tratamento.",
+  summary:"Resumo do painel", variantsCount:"variantes", pgxCount:"marcadores farmacogenómicos", clinicalCount:"decisões clínicas", panel:"Tabela de variantes",
+  gene:"Gene", variant:"Variante", genotype:"Genótipo sintético", category:"Categoria", interpretation:"Interpretação", actionability:"Aplicabilidade",
+  categories:{ "Nutrient metabolism":"Metabolismo de nutrientes", "Iron handling":"Metabolismo do ferro", Pharmacogenomics:"Farmacogenómica", "Common trait":"Traço comum", "Sport trait":"Traço desportivo", "Food tolerance":"Tolerância alimentar" },
+  statuses:{ low:"Baixa", boundary:"Confirmar primeiro", informational:"Informativo" },
+  findings:{ mthfr:"Uma cópia da variante comum C677T; isoladamente não exige metilfolato.", hfe_c282y:"C282Y não foi detetada no painel sintético.", hfe_h63d:"Uma cópia sintética de H63D; ser portador não equivale a hemocromatose.", cyp2c19:"Diplótipo demonstrativo de função normal; não alterar medicação.", slco1b1:"Diplótipo demonstrativo de função normal; exigiria confirmação clínica.", apoe:"ε3/ε3 fictício; não garante ausência de risco cardiovascular ou neurológico.", actn3:"Marcador desportivo comum com baixo valor preditivo individual.", mcm6:"Compatível com persistência da lactase, mas a tolerância alimentar deve orientar decisões." },
+  boundaryNote:"Nenhuma variante é usada para diagnóstico, ancestralidade ou mudança de medicação. Resultados reais relevantes exigem teste validado e interpretação qualificada.",
+});
+Object.assign(I18N.pt.labs, {
+  title:"Análises de sangue sintéticas", intro:"Um painel laboratorial fictício complementa os dados do wearable. Valores, unidades e intervalos foram criados para a demonstração e não pertencem ao proprietário.",
+  metrics:"Biomarcadores principais", panel:"Painel laboratorial completo", date:"Data", biomarker:"Biomarcador", result:"Resultado", reference:"Referência do laboratório demo", status:"Estado", source:"Laboratório demo sintético",
+  statuses:{ within:"No intervalo", lower_edge:"Perto do limite inferior" },
+  panels:{ Glycaemic:"Glicemia", Lipids:"Lípidos", Inflammation:"Inflamação", Haematology:"Hematologia", Iron:"Ferro", Micronutrients:"Micronutrientes", Thyroid:"Tiroide", Liver:"Fígado", Kidney:"Rins" },
+  names:{ hba1c:"HbA1c", fasting_glucose:"Glicose em jejum", total_cholesterol:"Colesterol total", ldl:"LDL-C", hdl:"HDL-C", triglycerides:"Triglicéridos", apob:"ApoB", hs_crp:"hs-CRP", haemoglobin:"Hemoglobina", ferritin:"Ferritina", transferrin_saturation:"Saturação da transferrina", vitamin_d:"Vitamina D 25-OH", vitamin_b12:"Vitamina B12", folate:"Folato", tsh:"TSH", alt:"ALT", creatinine:"Creatinina" },
+  lowerEdgeNote:"52 nmol/L está dentro da referência sintética, mas perto do limite inferior; não é um diagnóstico de deficiência.", caveat:"Os intervalos variam por laboratório, método e contexto clínico. Um resultado isolado não é uma tendência.",
 });
 Object.assign(I18N.pt.body, {
   intro: "Seis medições sintéticas de peso modelam uma tendência gradual. A altura do perfil fictício é fixa e o IMC é recalculado localmente.",
@@ -247,31 +314,39 @@ Object.assign(I18N.pt.body, {
   date: "Data", source: "Fonte", sourceName: "Demo sintética",
 });
 Object.assign(I18N.pt.recommendations, {
-  intro: "Um protocolo demonstrativo calculado para um perfil de treino fictício e associado a evidência externa. Não é diagnóstico nem prescrição.",
+  intro: "Este protocolo demonstrativo combina sinais sintéticos do wearable, atividade, métricas corporais, análises e genética. Não é diagnóstico nem prescrição.",
   protocolDesc: "Cada cartão separa a base pessoal sintética da evidência externa e dos limites dos dados.",
   basedOn: "Porque aparece na demo",
+  boundary: "Limite da evidência",
+  statuses:{ ...I18N.pt.recommendations.statuses, maintain:"Manter", not_indicated:"Não indicado", confirm_first:"Confirmar primeiro" },
+  readiness:"Dados utilizados", readinessDesc:"Quatro módulos sintéticos contribuem para o protocolo demonstrativo.", geneticsText:"8 variantes inventadas; ações clínicas ficam bloqueadas sem confirmação.", labsText:"17 biomarcadores fictícios com unidades e referências do laboratório demo.", bodyText:"Peso e IMC servem apenas para cálculos, não para diagnóstico.", modulesWaiting:"módulos sem dados",
   medical: "Todas as premissas pessoais aqui apresentadas são sintéticas. Esta é uma demonstração educativa da interface, não aconselhamento médico para uma pessoa real.",
 });
-Object.assign(I18N.pt.recommendations.items.creatine, { basis: "18 de 36 treinos fictícios são sessões de força." });
+Object.assign(I18N.pt.recommendations.items, {
+  activity_base:{ title:"Manter o plano misto de atividade", basis:"Cerca de 8 000 passos diários e 36 treinos de força, corrida, ciclismo e caminhada.", dose:"Manter pelo menos 150 minutos semanais de atividade aeróbica moderada e 2 dias de força, ajustando aos sintomas e recuperação.", evidence:"As orientações de atividade física apoiam a combinação de trabalho aeróbico e força.", limitation:"O wearable não avalia técnica, dor, contraindicações ou intensidade exata.", caution:"Pare e procure avaliação médica perante dor, tonturas ou sintomas invulgares." },
+  creatine:{ ...I18N.pt.recommendations.items.creatine, basis:"18 de 36 treinos fictícios são de força; a creatinina sintética está no intervalo do laboratório demo.", limitation:"Uma creatinina isolada no intervalo não prova segurança do suplemento nem substitui avaliação renal." },
+  vitamin_d:{ ...I18N.pt.recommendations.items.vitamin_d, basis:"A vitamina D 25-OH sintética é 52 nmol/L, perto do limite inferior da referência demo, e o perfil está em Dublin.", dose:"Referência populacional HSE: 15 µg (600 IU) por dia de 31 de outubro a 17 de março para 13–64 anos; não é dose terapêutica.", evidence:"O NIH descreve ≥50 nmol/L como adequado para a maioria, e o HSE recomenda suplementação sazonal na Irlanda.", limitation:"Um resultado fictício não define um alvo individual nem explica sintomas.", caution:"Doses terapêuticas altas exigem revisão clínica." },
+  iron_hold:{ title:"Não adicionar ferro sem indicação", basis:"Hemoglobina, ferritina e saturação da transferrina sintéticas estão no intervalo; HFE C282Y não foi detetada e H63D tem uma cópia.", dose:"Não é proposto suplemento de ferro.", evidence:"O estado do ferro usa várias medidas e doses altas desnecessárias podem causar dano.", limitation:"Ser portador de H63D não diagnostica nem exclui sobrecarga de ferro.", caution:"Sintomas reais ou resultados anormais requerem interpretação clínica." },
+  mthfr_boundary:{ title:"Não comprar metilfolato por causa do MTHFR", basis:"O MTHFR C677T sintético é C/T e o folato está no intervalo demo.", dose:"Não é proposto um produto de folato específico do genótipo.", evidence:"O CDC indica que pessoas com variantes comuns de MTHFR processam ácido fólico.", limitation:"Uma variante comum não define a necessidade individual de suplemento.", caution:"Orientações de ácido fólico na gravidez são separadas." },
+  pgx_boundary:{ title:"Não alterar medicamentos pela genética demo", basis:"CYP2C19 e SLCO1B1 são inteiramente fictícios; não existe lista de medicamentos nem teste validado.", dose:"Não iniciar, parar ou alterar medicamentos ou doses.", evidence:"A FDA recomenda confirmação clínica e discussão profissional antes de agir sobre resultados farmacogenéticos de consumo.", limitation:"O genótipo demo mostra o produto, não compatibilidade medicamentosa.", caution:"São necessários o fármaco, indicação, dose, comorbilidades e teste validado." },
+});
 Object.assign(I18N.pt.recommendations.items.protein, {
   basis: "O perfil fictício combina treino de força com um último peso sintético de 70,9 kg; a ingestão alimentar é desconhecida.",
   dose: "Uma referência de cerca de 1,6 g/kg/dia corresponde a aproximadamente 113 g/dia de proteína total; use suplemento apenas para fechar uma lacuna medida.",
   limitation: "Este é um cálculo demonstrativo; seria necessário um diário alimentar para identificar uma lacuna real.",
 });
-Object.assign(I18N.pt.recommendations.items.vitamin_d, { basis: "A demo usa Europe/Dublin para ilustrar orientação dependente da região e da estação." });
-Object.assign(I18N.pt.recommendations.items.withhold, { basis: "As tendências sintéticas de sono e VFC não identificam uma deficiência nutricional específica." });
 Object.assign(I18N.pt.data, {
   title: "Catálogo de dados sintéticos",
   intro: "Que conjuntos de dados fictícios alimentam a demo, quantos registos contêm e como foram criados.",
-  tables: "12 conjuntos de dados sintéticos",
+  tables: "14 conjuntos de dados sintéticos",
   description: "Contagens do snapshot gerado e de fluxos de alta frequência simulados.",
   publicDemo: "Demo pública · sem dados pessoais",
   reviewedSynthetic: "Snapshot sintético revisto",
-  categories: { ...I18N.pt.data.categories, Body: "Corpo" },
+  categories: { ...I18N.pt.data.categories, Body: "Corpo", Genetics:"Genética", Laboratory:"Laboratório" },
 });
 I18N.pt.footer = "Medições sintéticas · showcase público · geração reprodutível";
 
-const LanguageContext = createContext({ language: "ru", c: I18N.ru });
+const LanguageContext = createContext({ language: "en", c: I18N.en });
 const useLocale = () => useContext(LanguageContext);
 
 const STAGE_Y = { awake: 28, rem: 84, light: 140, deep: 196, out_of_bed: 28 };
@@ -636,26 +711,63 @@ function EmptyModule({ id, title, eyebrow, description, accepts, row }) {
   </DataComponent>;
 }
 
-function Genetics({ availability }) {
+function Genetics({ variants }) {
   const { c } = useLocale();
-  const row = availability.find(item => item.module === "genetics") ?? { module: "genetics", status: "missing", records: 0 };
+  const pgxCount = variants.filter(row => row.category === "Pharmacogenomics").length;
   return <>
     <PageIntro eyebrow={c.genetics.eyebrow} title={c.genetics.title}>{c.genetics.intro}</PageIntro>
-    <div className="pg-empty-grid">
-      <EmptyModule id="genome-dna" title={c.genetics.dna} eyebrow="Genome explorer" row={row} accepts="23andMe / Ancestry raw genotype" description={c.genetics.dnaDesc} />
-      <EmptyModule id="genome-pharma" title={c.genetics.pharma} eyebrow="Medication response" row={row} accepts={c.genetics.pharmaAccept} description={c.genetics.pharmaDesc} />
-      <EmptyModule id="genome-risks" title={c.genetics.risks} eyebrow="Hereditary & cancer" row={row} accepts={c.genetics.risksAccept} description={c.genetics.risksDesc} />
-      <EmptyModule id="genome-ancestry" title={c.genetics.ancestry} eyebrow="Ancestry" row={row} accepts="autosomal DNA file" description={c.genetics.ancestryDesc} />
-    </div>
+    <DataComponent id="genome-summary" queryId="genetic_variants" title={c.genetics.summary} kind="custom" variant="card"
+      sourceRows={variants} displayRows={variants} description={c.genetics.boundaryNote}>
+      <div className="pg-genome-summary" data-reviewed-rows>
+        <div><strong>{variants.length}</strong><span>{c.genetics.variantsCount}</span></div>
+        <div><strong>{pgxCount}</strong><span>{c.genetics.pgxCount}</span></div>
+        <div><strong>0</strong><span>{c.genetics.clinicalCount}</span></div>
+        <p>{c.genetics.boundaryNote}</p>
+      </div>
+    </DataComponent>
+    <DataComponent id="genome-variants" queryId="genetic_variants" title={c.genetics.panel} kind="table" variant="card"
+      sourceRows={variants} displayRows={variants} description={c.genetics.boundaryNote}>
+      <div className="pg-table-scroll" data-reviewed-rows>
+        <div className="pg-genome-table" role="table">
+          <div className="pg-genome-row pg-genome-head" role="row"><span>{c.genetics.gene}</span><span>{c.genetics.variant}</span><span>{c.genetics.genotype}</span><span>{c.genetics.category}</span><span>{c.genetics.interpretation}</span><span>{c.genetics.actionability}</span></div>
+          {variants.map(row => <div className="pg-genome-row" role="row" key={row.id}>
+            <strong>{row.gene}</strong><span>{row.variant}</span><span>{row.genotype}</span><span>{c.genetics.categories[row.category] ?? row.category}</span><span>{c.genetics.findings[row.id]}</span><em data-status={row.actionability}>{c.genetics.statuses[row.actionability]}</em>
+          </div>)}
+        </div>
+      </div>
+    </DataComponent>
   </>;
 }
 
-function Labs({ availability }) {
-  const { c } = useLocale();
-  const row = availability.find(item => item.module === "blood_labs") ?? { module: "blood_labs", status: "missing", records: 0 };
+function Labs({ rows }) {
+  const { language, c } = useLocale();
+  const featuredIds = ["hba1c", "ferritin", "vitamin_d", "apob"];
+  const featured = featuredIds.map(id => rows.find(row => row.id === id)).filter(Boolean);
+  const decimals = value => Math.abs(Number(value)) >= 10 ? 0 : Math.abs(Number(value)) >= 1 ? 1 : 2;
   return <>
     <PageIntro eyebrow={c.labs.eyebrow} title={c.labs.title}>{c.labs.intro}</PageIntro>
-    <EmptyModule id="labs-empty" title={c.labs.metrics} eyebrow="Blood panels" row={row} accepts={c.labs.accept} description={c.labs.description} />
+    <DataComponent id="labs-key" queryId="blood_labs" title={c.labs.metrics} kind="custom" variant="card"
+      sourceRows={rows} displayRows={featured} description={c.labs.caveat}>
+      <div className="pg-lab-cards" data-reviewed-rows>
+        {featured.map(row => <article key={row.id} data-status={row.status}>
+          <span>{c.labs.panels[row.panel] ?? row.panel}</span><h3>{c.labs.names[row.id]}</h3>
+          <strong>{formatNumber(row.value, decimals(row.value), language)} <small>{row.unit}</small></strong>
+          <p>{c.labs.reference}: {row.reference}</p><em>{c.labs.statuses[row.status]}</em>
+        </article>)}
+      </div>
+    </DataComponent>
+    <DataComponent id="labs-panel" queryId="blood_labs" title={c.labs.panel} kind="table" variant="card"
+      sourceRows={rows} displayRows={rows} description={c.labs.caveat}>
+      <div className="pg-table-scroll" data-reviewed-rows>
+        <div className="pg-labs-table" role="table">
+          <div className="pg-labs-row pg-labs-head" role="row"><span>{c.labs.date}</span><span>{c.labs.biomarker}</span><span>{c.genetics.category}</span><span>{c.labs.result}</span><span>{c.labs.reference}</span><span>{c.labs.status}</span></div>
+          {rows.map(row => <div className="pg-labs-row" role="row" key={row.id}>
+            <span>{formatDate(row.date, language)}</span><strong>{c.labs.names[row.id]}</strong><span>{c.labs.panels[row.panel] ?? row.panel}</span><b>{formatNumber(row.value, decimals(row.value), language)} {row.unit}</b><span>{row.reference}</span><em data-status={row.status}>{c.labs.statuses[row.status]}</em>
+          </div>)}
+        </div>
+      </div>
+      <p className="pg-lab-note">{c.labs.lowerEdgeNote} {c.labs.caveat}</p>
+    </DataComponent>
   </>;
 }
 
@@ -787,7 +899,7 @@ function DataInventory({ coverage, snapshot }) {
   </>;
 }
 
-function LocalizedDashboardBody({ initialView, snapshot, queries, current, previous, period, setPeriod, daily, latestSummary, latestSegments, workouts, coverage, availability, evidence, bodyRows }) {
+function LocalizedDashboardBody({ initialView, snapshot, queries, current, previous, period, setPeriod, daily, latestSummary, latestSegments, workouts, coverage, availability, evidence, bodyRows, geneticRows, labRows }) {
   const { c } = useLocale();
   const tabs = useMemo(() => TAB_IDS.map(id => ({
     id,
@@ -800,8 +912,8 @@ function LocalizedDashboardBody({ initialView, snapshot, queries, current, previ
   return tab === "sleep" ? <Sleep {...common} summary={latestSummary} segments={latestSegments} />
     : tab === "recovery" ? <Recovery {...common} />
       : tab === "activity" ? <Activity {...common} workouts={workouts} />
-        : tab === "genome" ? <Genetics availability={availability} />
-          : tab === "labs" ? <Labs availability={availability} />
+        : tab === "genome" ? <Genetics variants={geneticRows} />
+          : tab === "labs" ? <Labs rows={labRows} />
             : tab === "body" ? <Body rows={bodyRows} />
               : tab === "recommendations" ? <Recommendations {...common} availability={availability} evidence={evidence} />
                 : tab === "data" ? <DataInventory coverage={coverage} snapshot={snapshot} />
@@ -810,7 +922,7 @@ function LocalizedDashboardBody({ initialView, snapshot, queries, current, previ
 
 export function DashboardContent({ initialView = {} }) {
   const { snapshot, queries } = useDataApp();
-  const [language, setLanguage] = useState("ru");
+  const [language, setLanguage] = useState("en");
   const [period, setPeriod] = useState("30");
   const c = I18N[language];
   const daily = queries.daily_health?.rows ?? [];
@@ -821,6 +933,8 @@ export function DashboardContent({ initialView = {} }) {
   const availability = queries.module_availability?.rows ?? [];
   const evidence = queries.recommendation_evidence?.rows ?? [];
   const bodyRows = queries.body_metrics?.rows ?? [];
+  const geneticRows = queries.genetic_variants?.rows ?? [];
+  const labRows = queries.blood_labs?.rows ?? [];
   const { current, previous } = useMemo(() => {
     const count = period === "all" ? daily.length : Number(period);
     const currentRows = daily.slice(-count);
@@ -831,7 +945,7 @@ export function DashboardContent({ initialView = {} }) {
   return <LanguageContext.Provider value={{ language, c }}>
     <article className="page pg-page" data-language={language} lang={language}>
       <LanguageSwitcher language={language} onChange={setLanguage} />
-      <LocalizedDashboardBody key={language} {...{ initialView, snapshot, queries, current, previous, period, setPeriod, daily, latestSummary, latestSegments, workouts, coverage, availability, evidence, bodyRows }} />
+      <LocalizedDashboardBody key={language} {...{ initialView, snapshot, queries, current, previous, period, setPeriod, daily, latestSummary, latestSegments, workouts, coverage, availability, evidence, bodyRows, geneticRows, labRows }} />
       <footer className="pg-footer"><span>Project Genome</span><p>{c.footer}</p></footer>
     </article>
   </LanguageContext.Provider>;

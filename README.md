@@ -1,20 +1,21 @@
 # Project Genome — Synthetic Health Dashboard
 
 A public, multilingual showcase of a personal-health dashboard. It demonstrates
-sleep architecture, recovery, heart rate, activity, workouts, weight/BMI and
-evidence-linked recommendations without containing any real person's health
-records.
+sleep architecture, recovery, heart rate, activity, workouts, weight/BMI,
+fictional blood results, fictional genotype variants and evidence-linked
+recommendations without containing any real person's health records.
 
-The interface supports Russian, English and Portuguese.
+The interface opens in English and supports Russian and Portuguese switching.
 
 ## Synthetic-data guarantee
 
 - Every measurement in `src/data.json` is generated deterministically.
 - The generator does not read the private dashboard or any health export.
 - No account, device, application or person identifier is included.
-- The fictional profile covers 150 days, 36 workouts and six body measurements.
-- Genetics and blood-laboratory modules intentionally stay empty to demonstrate
-  honest missing-data states.
+- The fictional profile covers 150 days, 36 workouts, six body measurements,
+  17 blood biomarkers and eight genotype variants.
+- Genetic and laboratory fixtures are explicitly synthetic and include
+  conservative interpretation boundaries; they are not copied from a person.
 
 The values are plausible product-demo fixtures, not clinical observations and
 not medical advice.
