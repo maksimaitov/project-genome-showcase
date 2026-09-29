@@ -1,0 +1,15 @@
+# Dependencies and local tooling
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Generated builds and portable exports
+dist/
+.data-app-offline/
+
+# Logs and editor state
+*.log
+.idea/
+.vscode/

@@ -1,0 +1,54 @@
+:root {
+  color-scheme: light;
+  --adaptive-theme: 0;
+  --font-sans-default: Inter, -apple-system-body, ui-sans-serif, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-sans: var(--vscode-font-family, var(--font-sans-default));
+  --font-serif: "Noto Serif", "Iowan Old Style", Baskerville, "Times New Roman", serif;
+  --background: #f8faf6;
+  --surface: #f2f4f0;
+  --surface-raised: #ffffff;
+  --surface-container-low: #f2f4f0;
+  --surface-container-high: #e7e9e5;
+  --outline-variant: #c5c7c2;
+  --muted: #eceeea;
+  --control: #ffffff;
+  --control-hover: #e7e9e5;
+  --interaction-hover: var(--muted);
+  --interaction-active: var(--control-hover);
+  --text: #191c1a;
+  --secondary: #61665f;
+  --border: #daddd7;
+  --border-strong: #b9bdb7;
+  --accent: #c0875b;
+  --accent-ink: #683c17;
+  --positive: #567566;
+  --negative: #8a6252;
+  --chart-1: #3f5b51;
+  --chart-2: #c0875b;
+  --chart-3: #7d6a88;
+  --chart-4: #607f86;
+  --chart-5: #9aaf98;
+  --chart-6: #9c795e;
+  --chart-7: #75584f;
+  --chart-8: #8d918b;
+  --chart-neutral-fill: color-mix(in srgb, var(--text) 3%, var(--surface));
+  --ranked-list-fill: color-mix(in srgb, var(--chart-1) 16%, var(--surface));
+  --ranked-list-fill-hover: color-mix(in srgb, var(--chart-1) 24%, var(--surface));
+  --movement-positive: color-mix(in srgb, var(--positive) 75%, var(--text));
+  --movement-negative: color-mix(in srgb, var(--negative) 75%, var(--text));
+  --movement-total: var(--secondary);
+  --card-radius: 10px;
+  --data-card-radius: 10px;
+  --data-card-background: #ffffff;
+  --control-radius: 8px;
+  --mark-radius: 8;
+  --card-shadow: 0 1px 0 rgb(25 28 26 / 4%), 0 12px 32px -30px rgb(25 28 26 / 32%);
+  --shadow: 0 24px 60px -40px rgb(25 28 26 / 38%);
+  --data-app-chrome-background: var(--background);
+  --data-app-chrome-text: var(--text);
+}
+
+:root:not([data-app-theme]),
+:root:is([data-app-theme="original"], [data-app-theme="codex-classic"]) {
+  --dashboard-background: var(--background);
+}
